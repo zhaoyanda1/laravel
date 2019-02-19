@@ -188,11 +188,6 @@ class WeixinController extends Controller
                             "appid"=>"wx286b93c14bbf93aa",
                             "pagepath"=>"pages/lunar/index"
                         ],
-                        [
-                            "type"=>"click",
-                            "name"=>"赞一下我们",
-                            "key"=>"V1001_GOOD"
-                        ]
                     ]
                 ]
             ]
