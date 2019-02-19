@@ -174,7 +174,7 @@ class WeixinController extends Controller
             ],
             [
                 [
-                    "name"=>"菜单",
+                    "name"=>"网易云",
                     "sub_button"=>[
                         [
                             "type"=>"view",
