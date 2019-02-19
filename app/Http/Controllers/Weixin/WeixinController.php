@@ -88,13 +88,13 @@ class WeixinController extends Controller
 
     /**
      * 客服处理
-     * @param $openid   用户openid
+     * @param $openid   用户openi
      * @param $from     开发者公众号id 非 APPID
      */
     public function kefu01($openid,$from)
     {
         // 文本消息
-        $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello World, 现在时间'. date('Y-m-d H:i:s') .']]></Content></xml>';
+        $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello .. 现在时间'. date('Y-m-d H:i:s') .']]></Content></xml>';
         echo $xml_response;
     }
 
