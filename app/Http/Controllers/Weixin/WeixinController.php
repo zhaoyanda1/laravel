@@ -178,7 +178,7 @@ class WeixinController extends Controller
 
         // 3 解析微信接口返回信息
 
-        $response_arr = json_decode($r->getBody(),true);
+        $response_arr = json_encode($r->getBody(),true);
         //echo '<pre>';print_r($response_arr);echo '</pre>';
 
         if($response_arr['errcode'] == 0){
