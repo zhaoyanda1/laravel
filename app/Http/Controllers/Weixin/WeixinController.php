@@ -147,28 +147,37 @@ class WeixinController extends Controller
         //2 请求微信接口
         $client = new GuzzleHttp\Client(['base_uri' => $url]);
 
-        $data = [
+        $data= [
             "button"=>[
                 [
-                    "type"  => "view",      // view类型 跳转指定 URL
-                    "name"  => "asd",
-                    "url"   => "https://www.baidu.com"
-                ],
-                [
+                    "name"=>"菜单",
                     "sub_button"=>[
                         [
                             "type"=>"view",
                             "name"=>"网易云",
                             "url"=>"https://music.163.com/"
                         ],
+                        [
+                            "type"=>"miniprogram",
+                            "name"=>"wxa",
+                            "url"=>"http://mp.weixin.qq.com",
+                            "appid"=>"wx286b93c14bbf93aa",
+                            "pagepath"=>"pages/lunar/index"
+                        ],
+                        [
+                            "type"=>"click",
+                            "name"=>"赞一下我们",
+                            "key"=>"V1001_GOOD"
                         ]
-                ]]
+                    ]
+                ]
+            ]
         ];
 
 
 
         $r = $client->request('POST', $url, [
-            'body' => json_encode($data,JSON_UNESCAPED_UNICODE)
+            'body' => json_encode($data)
         ]);
 
         // 3 解析微信接口返回信息
