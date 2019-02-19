@@ -180,11 +180,11 @@ class WeixinController extends Controller
                     ]
                 ],
                 [
-                    "name"=>"微信公众平台",
+                    "name"=>"微信",
                     "sub_button"=>[
                         [
                             "type"=>"view",
-                            "name"=>"微信公众平台",
+                            "name"=>"微信",
                             "url"=>"https://mp.weixin.qq.com"
                         ],
                         [
