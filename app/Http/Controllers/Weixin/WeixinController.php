@@ -77,7 +77,7 @@ class WeixinController extends Controller
                 var_dump($id);
             }
             // 文本消息
-            $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello '.谢谢你的关注.']]></Content></xml>';
+            $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello '.'谢谢你的关注'.']]></Content></xml>';
             echo $xml_response;
         }elseif($event=='CLICK'){               //click 菜单
             if($xml->EventKey=='kefu01'){
