@@ -158,11 +158,19 @@ class WeixinController extends Controller
                             "url"=>"https://music.163.com/"
                         ],
                         [
-                            "type"=>"miniprogram",
-                            "name"=>"wxa",
-                            "url"=>"http://mp.weixin.qq.com",
-                            "appid"=>"wx94cc1e8ca88dde8a",
-                            "pagepath"=>"pages/lunar/index"
+                            "type"=>"click",
+                            "name"=>"赞一下我们",
+                            "key"=>"V1001_GOOD"
+                        ]
+                    ]
+                ],
+                [
+                    "name"=>"百度",
+                    "sub_button"=>[
+                        [
+                            "type"=>"view",
+                            "name"=>"百度",
+                            "url"=>"https://baidu.com/"
                         ],
                         [
                             "type"=>"click",
@@ -172,19 +180,17 @@ class WeixinController extends Controller
                     ]
                 ],
                 [
-                    "name"=>"网易云",
+                    "name"=>"微信公众平台",
                     "sub_button"=>[
                         [
                             "type"=>"view",
-                            "name"=>"网易云",
-                            "url"=>"https://music.163.com/"
+                            "name"=>"微信公众平台",
+                            "url"=>"https://mp.weixin.qq.com"
                         ],
                         [
-                            "type"=>"miniprogram",
-                            "name"=>"wxa",
-                            "url"=>"http://mp.weixin.qq.com",
-                            "appid"=>"wx94cc1e8ca88dde8a",
-                            "pagepath"=>"pages/lunar/index"
+                            "type"=>"click",
+                            "name"=>"赞一下我们",
+                            "key"=>"V1001_GOOD"
                         ]
                     ]
                 ]
