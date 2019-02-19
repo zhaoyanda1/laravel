@@ -148,13 +148,26 @@ class WeixinController extends Controller
         $client = new GuzzleHttp\Client(['base_uri' => $url]);
 
         $data = [
-            "button"    => [
+            "button"=>[
                 [
-                    "type"  => "view",      // view类型 跳转指定 URL
-                    "name"  => "uhbs",
-                    "url"   => "https://www.baidu.com"
-                ]
-            ]
+                    "type"=>"click",
+                    "name"=>"今日歌曲",
+                    "key"=>"V1001_TODAY_MUSIC"
+                ],
+                [
+                    "name"=>"菜单",
+                    "sub_button"=>[
+                        [
+                            "type"=>"view",
+                            "name"=>"网易云",
+                            "url"=>"https://music.163.com/"
+                        ],
+                        [
+                            "type"=>"click",
+                            "name"=>"赞一下我们",
+                            "key"=>"V1001_GOOD"
+                        ]]
+                ]]
         ];
 
 
