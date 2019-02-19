@@ -161,7 +161,7 @@ class WeixinController extends Controller
                             "type"=>"miniprogram",
                             "name"=>"wxa",
                             "url"=>"http://mp.weixin.qq.com",
-                            "appid"=>"wx286b93c14bbf93aa",
+                            "appid"=>"wx94cc1e8ca88dde8a",
                             "pagepath"=>"pages/lunar/index"
                         ],
                         [
@@ -170,9 +170,7 @@ class WeixinController extends Controller
                             "key"=>"V1001_GOOD"
                         ]
                     ]
-                ]
-            ],
-            [
+                ],
                 [
                     "name"=>"网易云",
                     "sub_button"=>[
@@ -185,9 +183,9 @@ class WeixinController extends Controller
                             "type"=>"miniprogram",
                             "name"=>"wxa",
                             "url"=>"http://mp.weixin.qq.com",
-                            "appid"=>"wx286b93c14bbf93aa",
+                            "appid"=>"wx94cc1e8ca88dde8a",
                             "pagepath"=>"pages/lunar/index"
-                        ],
+                        ]
                     ]
                 ]
             ]
