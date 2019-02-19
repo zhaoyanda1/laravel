@@ -150,23 +150,18 @@ class WeixinController extends Controller
         $data = [
             "button"=>[
                 [
-                    "type"=>"click",
-                    "name"=>"今日歌曲",
-                    "key"=>"V1001_TODAY_MUSIC"
+                    "type"  => "view",      // view类型 跳转指定 URL
+                    "name"  => "asd",
+                    "url"   => "https://www.baidu.com"
                 ],
                 [
-                    "name"=>"菜单",
                     "sub_button"=>[
                         [
                             "type"=>"view",
                             "name"=>"网易云",
                             "url"=>"https://music.163.com/"
                         ],
-                        [
-                            "type"=>"click",
-                            "name"=>"赞一下我们",
-                            "key"=>"V1001_GOOD"
-                        ]]
+                        ]
                 ]]
         ];
 
