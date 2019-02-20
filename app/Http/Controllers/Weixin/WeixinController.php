@@ -104,36 +104,36 @@ class WeixinController extends Controller
                         <Content><![CDATA[' . date('Y-m-d H:i:s') . ']]></Content>
                         </xml>';
                     echo $xml_response;
-                } elseif ($xml->MsgType == 'event') {        //判断事件类型
-                    if ($event == 'subscribe') {                        //扫码关注事件
-                        $sub_time = $xml->CreateTime;               //扫码关注时间
-                        //获取用户信息
-                        $user_info = $this->getUserInfo($openid);
-                        var_dump($user_info);
+                }
 
-                        //保存用户信息
-                        $u = WeixinUser::where(['openid' => $openid])->first();
-                        if ($u) {       //用户不存在
-                            echo '用户已存在';
-                        } else {
-                            $user_data = [
-                                'openid' => $openid,
-                                'add_time' => time(),
-                                'nickname' => $user_info['nickname'],
-                                'sex' => $user_info['sex'],
-                                'headimgurl' => $user_info['headimgurl'],
-                                'subscribe_time' => $sub_time,
-                            ];
-                            print_r($user_data);
-                            $id = WeixinUser::insertGetId($user_data);      //保存用户信息
-                            //var_dump($id);
-                        }
-                    } elseif ($event == 'CLICK') {               //click 菜单
-                        if ($xml->EventKey == 'kefu01') {       // 根据 EventKey判断菜单
-                            $this->kefu01($openid, $xml->ToUserName);
-                        }
+            }elseif ($xml->MsgType == 'event') {        //判断事件类型
+                if ($event == 'subscribe') {                        //扫码关注事件
+                    $sub_time = $xml->CreateTime;               //扫码关注时间
+                    //获取用户信息
+                    $user_info = $this->getUserInfo($openid);
+                    var_dump($user_info);
+
+                    //保存用户信息
+                    $u = WeixinUser::where(['openid' => $openid])->first();
+                    if ($u) {       //用户不存在
+                        echo '用户已存在';
+                    } else {
+                        $user_data = [
+                            'openid' => $openid,
+                            'add_time' => time(),
+                            'nickname' => $user_info['nickname'],
+                            'sex' => $user_info['sex'],
+                            'headimgurl' => $user_info['headimgurl'],
+                            'subscribe_time' => $sub_time,
+                        ];
+                        print_r($user_data);
+                        $id = WeixinUser::insertGetId($user_data);      //保存用户信息
+                        //var_dump($id);
                     }
-
+                } elseif ($event == 'CLICK') {               //click 菜单
+                    if ($xml->EventKey == 'kefu01') {       // 根据 EventKey判断菜单
+                        $this->kefu01($openid, $xml->ToUserName);
+                    }
                 }
 
             }
