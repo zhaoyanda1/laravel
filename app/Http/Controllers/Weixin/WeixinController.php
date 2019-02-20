@@ -109,11 +109,12 @@ class WeixinController extends Controller
                         $sub_time = $xml->CreateTime;               //扫码关注时间
                         //获取用户信息
                         $user_info = $this->getUserInfo($openid);
+                        var_dump($user_info);
 
                         //保存用户信息
                         $u = WeixinUser::where(['openid' => $openid])->first();
                         if ($u) {       //用户不存在
-                            //echo '用户已存在';
+                            echo '用户已存在';
                         } else {
                             $user_data = [
                                 'openid' => $openid,
@@ -123,7 +124,7 @@ class WeixinController extends Controller
                                 'headimgurl' => $user_info['headimgurl'],
                                 'subscribe_time' => $sub_time,
                             ];
-
+                            print_r($user_data);
                             $id = WeixinUser::insertGetId($user_data);      //保存用户信息
                             //var_dump($id);
                         }
