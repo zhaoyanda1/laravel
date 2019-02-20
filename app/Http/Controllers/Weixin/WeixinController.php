@@ -82,7 +82,7 @@ class WeixinController extends Controller
             }elseif ($xml->MsgType == 'video') {       //用户发送图片信息
                 //视业务需求是否需要下载保存图片
                 if (1) {  //下载视频素材
-                    $this->dlWxImg($xml->MediaId);
+                    $this->dlVideo($xml->MediaId);
                     $xml_response = '
                         <xml>
                         <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
