@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Redis;
 use GuzzleHttp;
+use Illuminate\Support\Facades\Storage;
 
 class WeixinController extends Controller
 {
@@ -103,13 +104,13 @@ class WeixinController extends Controller
 
     /**
      * 客服处理
-     * @param $openid   用户openi
+     * @param $openid   用户openid
      * @param $from     开发者公众号id 非 APPID
      */
     public function kefu01($openid,$from)
     {
         // 文本消息
-        $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello .. 现在时间'. date('Y-m-d H:i:s') .']]></Content></xml>';
+        $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello World, 现在时间'. date('Y-m-d H:i:s') .']]></Content></xml>';
         echo $xml_response;
     }
 
@@ -169,7 +170,10 @@ class WeixinController extends Controller
 
         }
     }
-    
+
+
+
+
     /**
      * 接收事件推送
      */
@@ -235,7 +239,7 @@ class WeixinController extends Controller
         $data= [
             "button"=>[
                 [
-                    "name"=>"菜单",
+                    "name"=>"一级菜单",
                     "sub_button"=>[
                         [
                             "type"=>"view",
@@ -243,39 +247,33 @@ class WeixinController extends Controller
                             "url"=>"https://music.163.com/"
                         ],
                         [
-                            "type"  => "click",      // click类型
-                            "name"  => "客服01",
-                            "key"   => "kefu01"
-                        ]
+                            "type"=>"miniprogram",
+                            "name"=>"微信抽奖",
+                            "url"=>"http://mp.weixin.qq.com",
+                            "appid"=>"wxe072a1fff4e9a930",
+                            "pagepath"=>"pages/lunar/index"
+                        ],
                     ]
                 ],
                 [
-                    "name"=>"百度",
+                    "name"=>"百度一下",
                     "sub_button"=>[
                         [
                             "type"=>"view",
-                            "name"=>"百度",
+                            "name"=>"进入百度",
                             "url"=>"https://baidu.com/"
                         ],
                         [
-                            "type"  => "click",      // click类型
-                            "name"  => "客服01",
-                            "key"   => "kefu01"
-                        ]
-                    ]
-                ],
-                [
-                    "name"=>"微信",
-                    "sub_button"=>[
-                        [
-                            "type"=>"view",
-                            "name"=>"微信",
-                            "url"=>"https://mp.weixin.qq.com"
+                            "type"=>"miniprogram",
+                            "name"=>"微信扫码",
+                            "url"=>"http://mp.weixin.qq.com",
+                            "appid"=>"wxe072a1fff4e9a930",
+                            "pagepath"=>"pages/lunar/index"
                         ],
                         [
-                            "type"  => "click",      // click类型
-                            "name"  => "客服01",
-                            "key"   => "kefu01"
+                            "type"=>"click",
+                            "name"=>"赞一下我们",
+                            "key"=>"kefu01"
                         ]
                     ]
                 ]
@@ -283,9 +281,9 @@ class WeixinController extends Controller
         ];
 
 
-
+        $body = json_encode($data,JSON_UNESCAPED_UNICODE);      //处理中文编码
         $r = $client->request('POST', $url, [
-            'body' => json_encode($data,JSON_UNESCAPED_UNICODE)
+            'body' => $body
         ]);
 
         // 3 解析微信接口返回信息
@@ -305,7 +303,14 @@ class WeixinController extends Controller
 
     }
 
-
+    /**
+     * 刷新access_token
+     */
+    public function refreshToken()
+    {
+        Redis::del($this->redis_weixin_access_token);
+        echo $this->getWXAccessToken();
+    }
 
 
 
