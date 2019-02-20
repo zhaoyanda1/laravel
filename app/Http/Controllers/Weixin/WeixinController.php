@@ -111,7 +111,7 @@ class WeixinController extends Controller
                     $sub_time = $xml->CreateTime;               //扫码关注时间
                     //获取用户信息
                     $user_info = $this->getUserInfo($openid);
-                    var_dump($user_info);
+                    var_dump($user_info);exit;
 
                     //保存用户信息
                     $u = WeixinUser::where(['openid' => $openid])->first();
