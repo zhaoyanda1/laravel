@@ -52,59 +52,57 @@ class WeixinController extends Controller
         $openid = $xml->FromUserName;               //用户openid
 
         // 处理用户发送消息
-        if (isset($xml->MsgType)) {
-            if ($xml->MsgType == 'text') {            //用户发送文本消息
-                $msg = $xml->Content;
+        if ($xml->MsgType == 'text') {            //用户发送文本消息
+            $msg = $xml->Content;
+            $xml_response = '
+                 <xml>
+                 <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+                 <FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName>
+                 <CreateTime>' . time() . '</CreateTime>
+                 <MsgType><![CDATA[text]]></MsgType>
+                 <Content><![CDATA[' . $msg . date('Y-m-d H:i:s') . ']]></Content>
+                 </xml>';
+            echo $xml_response;
+        }else if ($xml->MsgType == 'image') {       //用户发送图片信息
+            //视业务需求是否需要下载保存图片
+            if (1) {  //下载图片素材
+                $this->dlWxImg($xml->MediaId);
                 $xml_response = '
-                     <xml>
-                     <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-                     <FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName>
-                     <CreateTime>' . time() . '</CreateTime>
-                     <MsgType><![CDATA[text]]></MsgType>
-                     <Content><![CDATA[' . $msg . date('Y-m-d H:i:s') . ']]></Content>
-                     </xml>';
+                    <xml>
+                    <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+                    <FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName>
+                    <CreateTime>' . time() . '</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                    <Content><![CDATA[' . date('Y-m-d H:i:s') . ']]></Content>
+                    </xml>';
                 echo $xml_response;
-            }else if ($xml->MsgType == 'image') {       //用户发送图片信息
-                //视业务需求是否需要下载保存图片
-                if (1) {  //下载图片素材
-                    $this->dlWxImg($xml->MediaId);
-                    $xml_response = '
-                        <xml>
-                        <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-                        <FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName>
-                        <CreateTime>' . time() . '</CreateTime>
-                        <MsgType><![CDATA[text]]></MsgType>
-                        <Content><![CDATA[' . date('Y-m-d H:i:s') . ']]></Content>
-                        </xml>';
-                    echo $xml_response;
-                }
-            }else if ($xml->MsgType == 'video') {       //用户发送图片信息
-                //视业务需求是否需要下载保存图片
-                if (1) {  //下载视频素材
-                    $this->dlVideo($xml->MediaId);
-                    $xml_response = '
-                        <xml>
-                        <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-                        <FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName>
-                        <CreateTime>' . time() . '</CreateTime>
-                        <MsgType><![CDATA[text]]></MsgType>
-                        <Content><![CDATA[' . date('Y-m-d H:i:s') . ']]></Content>
-                        </xml>';
-                    echo $xml_response;
-                }
-            }else if($xml->MsgType == 'voice') {        //处理语音信息
-                if (1) {  //下载语音素材
-                    $this->dlVoice($xml->MediaId);
-                    $xml_response = '
-                        <xml>
-                        <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
-                        <FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName>
-                        <CreateTime>' . time() . '</CreateTime>
-                        <MsgType><![CDATA[text]]></MsgType>
-                        <Content><![CDATA[' . date('Y-m-d H:i:s') . ']]></Content>
-                        </xml>';
-                    echo $xml_response;
-                }
+            }
+        }else if ($xml->MsgType == 'video') {       //用户发送图片信息
+            //视业务需求是否需要下载保存图片
+            if (1) {  //下载视频素材
+                $this->dlVideo($xml->MediaId);
+                $xml_response = '
+                    <xml>
+                    <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+                    <FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName>
+                    <CreateTime>' . time() . '</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                    <Content><![CDATA[' . date('Y-m-d H:i:s') . ']]></Content>
+                    </xml>';
+                echo $xml_response;
+            }
+        }else if($xml->MsgType == 'voice') {        //处理语音信息
+            if (1) {  //下载语音素材
+                $this->dlVoice($xml->MediaId);
+                $xml_response = '
+                    <xml>
+                    <ToUserName><![CDATA[' . $openid . ']]></ToUserName>
+                    <FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName>
+                    <CreateTime>' . time() . '</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                    <Content><![CDATA[' . date('Y-m-d H:i:s') . ']]></Content>
+                    </xml>';
+                echo $xml_response;
             }
         }
 
