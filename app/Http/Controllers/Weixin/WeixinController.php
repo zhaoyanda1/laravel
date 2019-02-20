@@ -111,7 +111,7 @@ class WeixinController extends Controller
                     $sub_time = $xml->CreateTime;               //扫码关注时间
                     //获取用户信息
                     $user_info = $this->getUserInfo($openid);
-                    var_dump($user_info);exit;
+                    //var_dump($user_info);exit;
 
                     //保存用户信息
                     $u = WeixinUser::where(['openid' => $openid])->first();
@@ -126,7 +126,7 @@ class WeixinController extends Controller
                             'headimgurl' => $user_info['headimgurl'],
                             'subscribe_time' => $sub_time,
                         ];
-                        print_r($user_data);
+                        //print_r($user_data);
                         $id = WeixinUser::insertGetId($user_data);      //保存用户信息
                         //var_dump($id);
                     }
@@ -289,7 +289,7 @@ class WeixinController extends Controller
         $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token=' . $access_token . '&openid=' . $openid . '&lang=zh_CN';
 
         $data = json_decode(file_get_contents($url), true);
-        echo '<pre>';print_r($data);echo '</pre>';
+        //echo '<pre>';print_r($data);echo '</pre>';
         return $data;
     }
 
