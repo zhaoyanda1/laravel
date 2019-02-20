@@ -17,4 +17,6 @@ Route::group([
     $router->resource('/wechat',WechatController::class);
 
 
+
+
 });
