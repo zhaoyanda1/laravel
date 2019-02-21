@@ -393,7 +393,7 @@ class WeixinController extends Controller
                 "is_to_all"=>true
             ],
             "text"=>[
-                "content"=>"asd."
+                "content"=>"出色的."
             ],
             "msgtype"=>"text"
         ];
