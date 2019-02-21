@@ -106,4 +106,4 @@ Route::post('/weixin/valid','Weixin\WeixinController@validToken');
 
 Route::get('/weixin/create_menu','Weixin\WeixinController@createMenu');     //创建菜单
 
-Route::any('/all','Weixin\WeixinController@all');
+Route::any('/weixin/all','Weixin\WeixinController@all');
