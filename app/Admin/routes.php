@@ -15,7 +15,7 @@ Route::group([
     $router->resource('/goods',GoodsController::class);
     $router->resource('/users',UsersController::class);
     $router->resource('/wechat',WechatController::class);
-    $router->resource('/matter',MatterController::class);
+    $router->resource('/matter',WeixinMediaController::class);
 
 
 });
