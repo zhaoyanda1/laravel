@@ -196,7 +196,7 @@ class WechatController extends Controller
 
         }
         //获取用户openid
-        $list = WechatUser::all()->pluck('openid')->take(10)->toArray();
+        $list = WeixinUser::all()->pluck('openid')->take(10)->toArray();
 
 
         //群发消息
