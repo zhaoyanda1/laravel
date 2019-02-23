@@ -17,6 +17,6 @@ Route::group([
     $router->resource('/wechat',WechatController::class);
     $router->resource('/matter',WeixinMediaController::class);
 
-    $router->get('/weixin/sendmsg','WeixinController@sendMsgView');      //
-    $router->post('/weixin/sendmsg','WeixinController@sendMsg');
+    $router->get('/weixin/sendmsg','WechatController@sendMsgView');      //
+    $router->post('/weixin/sendmsg','WechatController@sendMsg');
 });

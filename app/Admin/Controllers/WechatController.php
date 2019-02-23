@@ -155,7 +155,7 @@ class WechatController extends Controller
         return $content
             ->header('微信')
             ->description('群发消息')
-            ->body(view('admin.weixin.send_msg'));
+            ->body(view('admin.qunfa.qunfa'));
     }
 
     /**
