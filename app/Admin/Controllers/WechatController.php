@@ -253,7 +253,7 @@ class WechatController extends Controller
     {
         $openid = $_GET['openid'];  //用户openid
         $pos = $_GET['pos'];        //上次聊天位置
-        $msg = WeixinChat::where(['openid'=>$openid])->where('id','>',$pos)->first();
+        $msg = WeixinChatModel::where(['openid'=>$openid])->where('id','>',$pos)->first();
         $res = WeixinUser::where(['openid'=>$openid])->first();
         $msg['ctime']=date('Y-m-d H:i:s');
         if($msg){
