@@ -243,7 +243,7 @@ class WechatController extends Controller
         return $content
             ->header('微信')
             ->description('私聊')
-            ->body(view('admin.weixin.information',$data));
+            ->body(view('admin.weixin.chat',$data));
     }
 
     /**
