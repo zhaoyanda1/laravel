@@ -557,9 +557,13 @@ class WeixinController extends Controller
         echo 'save_file_path: '.$save_file_path;echo '<hr>';
 
         //上传至微信永久素材
+        $data=[
+            'url'=>$save_file_path,
+            'add_time'=>time()
+        ];
+
+        $r=MaterUserModel::insertGetId($data);
         $this->upMaterialTest($save_file_path);
-
-
     }
 
     /**

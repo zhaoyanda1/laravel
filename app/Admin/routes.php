@@ -16,6 +16,7 @@ Route::group([
     $router->resource('/users',UsersController::class);
     $router->resource('/wechat',WechatController::class);
     $router->resource('/matter',WeixinMediaController::class);
+    $router->resource('/material',MaterialController::class);
 
     $router->get('/weixin/sendmsg','WechatController@sendMsgView');      //
     $router->post('/weixin/sendmsg','WechatController@sendMsg');
