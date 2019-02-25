@@ -91,7 +91,7 @@ class MaterialController extends Controller
 
         return $grid;
     }
-    
+
     /**
      * Make a show builder.
      *
