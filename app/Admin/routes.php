@@ -18,6 +18,10 @@ Route::group([
     $router->resource('/matter',WeixinMediaController::class);
     $router->resource('/material',MaterialController::class);
 
+    $router->get('/information','WechatController@information');      //
+    $router->get('/chat','WechatController@getChatMsg');      //
+    $router->get('/textMsg','WechatController@textMsg');      //
+
     $router->get('/weixin/sendmsg','WechatController@sendMsgView');      //
     $router->post('/weixin/sendmsg','WechatController@sendMsg');
 });
