@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Weixin;
 
+use App\Model\WeixinChatModel;
 use App\Model\WeixinMedia;
 use App\Model\WeixinUser;
 use App\Model\MaterUserModel;
@@ -67,6 +68,17 @@ class WeixinController extends Controller
                      <Content><![CDATA[' . $msg . date('Y-m-d H:i:s') . ']]></Content>
                      </xml>';
                 echo $xml_response;
+                //写入数据库
+                $data = [
+                    'open_id'    => $openid,
+                    'text'  => $msg,
+                    'ctime'  => time(),
+                    'type'=>0
+                ];
+
+                $m_id = WeixinChatModel ::insertGetId($data);
+                var_dump($m_id);
+
             } elseif ($xml->MsgType == 'image') {       //用户发送图片信息
                 //视业务需求是否需要下载保存图片
                 if (1) {  //下载图片素材
