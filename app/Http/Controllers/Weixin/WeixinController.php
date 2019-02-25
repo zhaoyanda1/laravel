@@ -560,7 +560,7 @@ class WeixinController extends Controller
         //上传至微信永久素材
         $data=[
             'url'=>$save_file_path,
-            'add_time'=>time()
+            'addtime'=>time()
         ];
 
         $r=MaterUserModel::insertGetId($data);
