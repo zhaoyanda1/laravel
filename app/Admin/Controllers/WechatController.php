@@ -302,7 +302,7 @@ class WechatController extends Controller
         if ($response_arr['errcode'] == 0) {
             //写入数据库
             $data = [
-                'openid' => $openid,
+                'open_id' => $openid,
                 'type'=>1,
                 'text'=>$text,
                 'ctime'=>time()
