@@ -82,8 +82,12 @@ class MaterialController extends Controller
         $grid = new Grid(new MaterUserModel);
 
         $grid->id('Id');
-        $grid->url('Url');
-        $grid->addtime('Addtime');
+        $grid->url('Url')->display(function($data){
+            return '<img src="/wx/images/'.$data.'"width=50px;height=50px;>';
+        });
+        $grid->addtime('Addtime')->display(function($time){
+            return date('Y-m-d H:s:i',$time);
+        });
 
         return $grid;
     }
