@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderModel extends Model
 {
-    public $table = 'laravel_order';
+    public $table = 'order';
     public $timestamps = false;
 
 
