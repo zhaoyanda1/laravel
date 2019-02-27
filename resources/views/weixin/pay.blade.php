@@ -26,7 +26,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url:     '/wechat/pay/wxsuccess?order_id='+"{{$order_id}}",
+                url:     '/weixin/pay/wxsuccess?order_id='+"{{$order_id}}",
                 type:    'get',
                 dataType: 'json',
                 success:   function (d) {
