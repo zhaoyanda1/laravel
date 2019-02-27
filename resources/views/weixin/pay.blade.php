@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.goods')
 
 @section('content')
     <h2 align="center">订单支付</h2>
