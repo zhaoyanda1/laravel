@@ -54,12 +54,12 @@ class PayController extends Controller
 //		echo 'result_code: '.$data->result_code;echo '<br>';
 //		echo 'prepay_id: '.$data->prepay_id;echo '<br>';
 //		echo 'trade_type: '.$data->trade_type;echo '<br>';
-        echo 'code_url: '.$data->code_url;echo '<br>';
+        //echo 'code_url: '.$data->code_url;echo '<br>';
 //        die;
         //echo '<pre>';print_r($data);echo '</pre>';
 
         //将 code_url 返回给前端，前端生成 支付二维码
-
+        return view('weixin.pay',['code_url'=>$data->code_url]);
     }
 
 
